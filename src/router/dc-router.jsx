@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBrowserRouter} from "react-router-dom";
 
-import {CharacterListPage} from "../pages/CharacterListPage";
+import {CharacterListPage} from "../pages/characters/CharacterListPage";
 import {RouterErrorPage} from "../pages/RouterErrorPage";
 import {ThreadPage} from "../pages/ThreadPage";
 import {StartupPage} from "../pages/StartupPage";
@@ -10,16 +10,16 @@ export const dcRouter = createBrowserRouter([
     {
         path: '/',
         element: <StartupPage />,
-        errorElement: <RouterErrorPage />,
-        children: [
-            {
-                path: 'characters',
-                element: <CharacterListPage />,
-            },
-            {
-                path: 'thread',
-                element: <ThreadPage />,
-            }
-        ]
+        errorElement: <RouterErrorPage />
+    },
+    {
+        path: '/characters',
+        element: <CharacterListPage />,
+        errorElement: <RouterErrorPage />
+    },
+    {
+        path: '/thread',
+        element: <ThreadPage />,
+        errorElement: <RouterErrorPage />
     }
 ]);
