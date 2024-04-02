@@ -3,7 +3,7 @@ import {createBrowserRouter} from "react-router-dom";
 
 import {CharacterListPage} from "../pages/characters/CharacterListPage";
 import {RouterErrorPage} from "../pages/RouterErrorPage";
-import {ThreadPage} from "../pages/ThreadPage";
+import {ThreadPage} from "../pages/thread/ThreadPage";
 import {DefaultLayout} from "../pages/layout/DefaultLayout";
 
 export const dcRouter = createBrowserRouter([
