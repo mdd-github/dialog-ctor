@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {DCRouterProvider} from "./router";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <div><h1>An empty react app</h1></div>
-);
+const mountDestination = document.getElementById('root');
+const root = ReactDOM.createRoot(mountDestination);
+root.render(<DCRouterProvider />);
