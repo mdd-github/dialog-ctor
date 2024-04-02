@@ -4,22 +4,22 @@ import {createBrowserRouter} from "react-router-dom";
 import {CharacterListPage} from "../pages/characters/CharacterListPage";
 import {RouterErrorPage} from "../pages/RouterErrorPage";
 import {ThreadPage} from "../pages/ThreadPage";
-import {StartupPage} from "../pages/StartupPage";
+import {DefaultLayout} from "../pages/layout/DefaultLayout";
 
 export const dcRouter = createBrowserRouter([
     {
         path: '/',
-        element: <StartupPage />,
-        errorElement: <RouterErrorPage />
+        element: <DefaultLayout />,
+        errorElement: <RouterErrorPage />,
+        children: [
+            {
+                path: '/',
+                element: <CharacterListPage />
+            },
+            {
+                path: '/thread',
+                element: <ThreadPage />
+            },
+        ]
     },
-    {
-        path: '/characters',
-        element: <CharacterListPage />,
-        errorElement: <RouterErrorPage />
-    },
-    {
-        path: '/thread',
-        element: <ThreadPage />,
-        errorElement: <RouterErrorPage />
-    }
 ]);
