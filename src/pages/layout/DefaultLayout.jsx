@@ -17,6 +17,12 @@ const APP_SCREENS = [
         hasNextButton: true,
         nextRouteName: '/chat',
         nextButtonLabel: 'Готово'
+    },
+    {
+        id: 2,
+        route: '/chat',
+        label: 'Проверка чата',
+        hasNextButton: false
     }
 ]
 
@@ -27,9 +33,10 @@ export const DefaultLayout = () => {
     }, [location.pathname])
 
     return (
-        <>
+        <div className="layout">
             <header className="layout_header">
                 <div className="layout_header_start">
+                    <img src={require('@/assets/images/tinkoff-logo.png')} alt="Tinkoff Logo"/>
                     <ul className="layout_header_navigation">
                         {
                             APP_SCREENS.map((screen) => (
@@ -51,11 +58,19 @@ export const DefaultLayout = () => {
                             {currentScreen.nextButtonLabel}
                         </NavLink>
                     }
+                    <button onClick={() => {
+                    }}>
+                        Испорт
+                    </button>
+                    <button onClick={() => {
+                    }}>
+                        Экспорт
+                    </button>
                 </div>
             </header>
             <main>
                 <Outlet/>
             </main>
-        </>
+        </div>
     )
 }

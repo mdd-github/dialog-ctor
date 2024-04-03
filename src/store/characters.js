@@ -6,25 +6,25 @@ const INITIAL_CHARACTER_LIST = [
         id: 0,
         name: '',
         bio: '',
-        avatar: 'images/man-1.png'
+        avatar: require('../assets/images/man-1.png')
     },
     {
         id: 1,
         name: '',
         bio: '',
-        avatar: 'images/man-2.png'
+        avatar: require('../assets/images/man-2.png')
     },
     {
         id: 2,
         name: '',
         bio: '',
-        avatar: 'images/woman-1.png'
+        avatar: require('../assets/images/woman-1.png')
     },
     {
         id: 3,
         name: '',
         bio: '',
-        avatar: 'images/woman-2.png'
+        avatar: require('../assets/images/woman-2.png')
     }
 ];
 
