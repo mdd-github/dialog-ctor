@@ -1,5 +1,6 @@
 import React, {useMemo} from "react";
 import {NavLink, Outlet, useLocation} from "react-router-dom";
+import TinkoffLogoSvg from '@assets/images/tinkoff-logo.svg';
 
 const APP_SCREENS = [
     {
@@ -36,7 +37,7 @@ export const DefaultLayout = () => {
         <div className="layout">
             <header className="layout_header">
                 <div className="layout_header_start">
-                    <img src={require('@/assets/images/tinkoff-logo.png')} alt="Tinkoff Logo"/>
+                    <img src={TinkoffLogoSvg} alt="Tinkoff Logo"/>
                     <ul className="layout_header_navigation">
                         {
                             APP_SCREENS.map((screen) => (
