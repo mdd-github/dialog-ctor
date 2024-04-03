@@ -1,45 +1,114 @@
+@import "mixins";
+
 .character-list {
   &_page {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+  }
+
+  &_page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
+    gap: var(--dc-block-padding-4);
+
+    background-color: var(--dc-primary-background-color);
+
+    padding: var(--dc-block-padding-4);
+    border-radius: var(--dc-border-radius);
+
+    h1 {
+      margin: 0;
+      padding: 0;
+
+      font-size: var(--dc-font-size-xl);
+    }
   }
 
   &_container {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
 
-    gap: 12px;
+    gap: var(--dc-block-padding-4);
   }
 
   &_item {
-    padding: 12px;
+    padding: var(--dc-block-padding-2);
 
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
+    border: 1px solid var(--dc-border-color);
+    border-radius: var(--dc-border-radius);
 
-    height: 280px;
-    width: 180px;
+    width: 250px;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: flex-start;
-    gap: 12px;
+    gap: var(--dc-block-padding-1);
 
     &_avatar {
-      width: 64px;
-      height: 64px;
+      align-self: center;
+
+      width: 128px;
+      height: 128px;
       object-fit: contain;
-      border-radius: 36px;
-      border: 4px solid rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      border: 1px solid var(--dc-border-color);
+
+      margin-bottom: var(--dc-block-padding-3);
     }
 
-    &_name {
+    &_field {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
 
+      &-title {
+        font-size: var(--dc-font-size-m);
+        font-weight: 600;
+      }
+
+      &-value {
+        font-size: var(--dc-font-size-m);
+        font-weight: 400;
+      }
+
+      input, textarea {
+        width: 100%;
+        font-size: var(--dc-font-size-s);
+        padding: var(--dc-block-padding-1);
+
+        border: 1px solid var(--dc-border-color);
+        border-radius: var(--dc-border-radius-sm);
+
+        margin-bottom: var(--dc-block-padding-1);
+      }
+
+      textarea {
+        resize: none;
+      }
+    }
+
+    &_buttons-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      gap: var(--dc-block-padding-1)
+    }
+
+    &_button {
+      @include dc-button(s);
+    }
+    &_button--secondary {
+      @include dc-button-secondary(s);
     }
   }
 }

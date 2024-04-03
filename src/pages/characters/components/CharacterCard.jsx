@@ -36,28 +36,34 @@ const CharacterCardEdit = ({character, onBlur}) => {
                 className="character-list_item_avatar"
             />
 
-            <fieldset className="character-list_item_name character-list_item_field">
-                <label htmlFor="character_name">Имя персонажа:</label>
+            <div className="character-list_item_field">
+                <label htmlFor="character_name" className="character-list_item_field-title">
+                    Имя персонажа:
+                </label>
                 <input
                     id="character_name"
                     type="text"
                     value={form.name}
                     onInput={(e) => onInputHandler('name', e)}
                 />
-            </fieldset>
+            </div>
 
-            <fieldset className="character-list_item_name character-list_item_field">
-                <label htmlFor="character_bio">Описание персонажа:</label>
+            <div className="character-list_item_field">
+                <span className="character-list_item_field-title">
+                    Описание персонажа:
+                </span>
                 <textarea
                     id="character_bio"
                     rows="3"
                     value={form.bio}
                     onInput={(e) => onInputHandler('bio', e)}
                 />
-            </fieldset>
+            </div>
 
             <div className="character-list_item_buttons-container">
-                <button className="character-list_item_button" type="button" onClick={() => onBlur?.()}>Отменить</button>
+                <button className="character-list_item_button--secondary" type="button" onClick={() => onBlur?.()}>
+                    Отменить
+                </button>
                 <button className="character-list_item_button">Сохранить</button>
             </div>
         </form>
@@ -73,17 +79,23 @@ const CharacterCardView = ({character}) => {
                 className="character-list_item_avatar"
             />
 
-            <span className="character-list_item_name">
-                {character.name.length === 0 ? 'Без имени' : character.name}
-            </span>
+            <div className="character-list_item_field">
+                <span className="character-list_item_field-title">
+                    Имя персонажа:
+                </span>
+                <span className="character-list_item_field-value">
+                    {character.name.length === 0 ? 'Без имени' : character.name}
+                </span>
+            </div>
 
-            {
-                character.bio.length !== 0 && (
-                    <span className="character-list_item_bio">
-                        {character.name.length === 0 ? 'Без имени' : character.name}
-                    </span>
-                )
-            }
+            <div className="character-list_item_field">
+                <span className="character-list_item_field-title">
+                    Описание персонажа:
+                </span>
+                <span className="character-list_item_field-value">
+                    {character.bio.length === 0 ? 'Описание не задано' : character.bio}
+                </span>
+            </div>
         </div>
     )
 }

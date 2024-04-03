@@ -10,6 +10,9 @@
   --dc-link-color--disabled: #0006;
   --dc-brand-color: #ffdd2d;
   --dc-brand-color--darken: #ecc701;
+  --dc-gray-color: #dedede;
+  --dc-gray-color--darken: #cbcaca;
+  --dc-border-color: #0002;
 
   --dc-block-padding-1: 6px;
   --dc-block-padding-2: 12px;
@@ -17,8 +20,11 @@
   --dc-block-padding-4: 24px;
 
   --dc-border-radius: 6px;
+  --dc-border-radius-sm: 3px;
 
   --dc-font-size-s: 12px;
   --dc-font-size-m: 14px;
   --dc-font-size-l: 18px;
+
+  --dc-font-size-xl: 22px;
 }

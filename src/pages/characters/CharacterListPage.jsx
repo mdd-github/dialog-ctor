@@ -9,27 +9,29 @@ export const CharacterListPage = () => {
 
     return (
         <div className="character-list_page">
-            <h1>Выбери персонажа</h1>
-            <div className="character-list_container">
-                {
-                    characters.map((character) => {
-                        if(characterInEdit === character.id) {
+            <div className="character-list_page-wrapper">
+                <h1>Выбери персонажа</h1>
+                <div className="character-list_container">
+                    {
+                        characters.map((character) => {
+                            if (characterInEdit === character.id) {
+                                return (
+                                    <CharacterCard
+                                        key={character.id}
+                                        character={character}
+                                        mode={CHARACTER_CARD_MODE.EDIT}
+                                        onBlur={() => setCharacterInEdit(null)}
+                                    />
+                                )
+                            }
                             return (
-                                <CharacterCard
-                                    key={character.id}
-                                    character={character}
-                                    mode={CHARACTER_CARD_MODE.EDIT}
-                                    onBlur={() => setCharacterInEdit(null)}
-                                />
+                                <div key={character.id} onClick={() => setCharacterInEdit(character.id)}>
+                                    <CharacterCard character={character} mode={CHARACTER_CARD_MODE.VIEW}/>
+                                </div>
                             )
-                        }
-                        return (
-                            <div key={character.id} onClick={() => setCharacterInEdit(character.id)}>
-                                <CharacterCard character={character} mode={CHARACTER_CARD_MODE.VIEW} />
-                            </div>
-                        )
-                    })
-                }
+                        })
+                    }
+                </div>
             </div>
         </div>
     );
