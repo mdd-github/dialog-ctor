@@ -61,7 +61,7 @@ export const DefaultLayout = () => {
                     }
                     <button onClick={() => {
                     }}>
-                        Испорт
+                        Импорт
                     </button>
                     <button onClick={() => {
                     }}>
@@ -69,7 +69,7 @@ export const DefaultLayout = () => {
                     </button>
                 </div>
             </header>
-            <main>
+            <main className="layout_content">
                 <Outlet/>
             </main>
         </div>

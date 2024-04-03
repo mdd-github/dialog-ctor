@@ -1,5 +1,75 @@
+@import "mixins";
 
 .layout {
   background: url("../images/background.jpg");
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  &_header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--dc-block-padding-2);
+    max-height: var(--dc-layout-header-height);
+
+    &_start, &_end {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--dc-block-padding-2);
+    }
+
+    &_navigation {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--dc-block-padding-3);
+
+      list-style: none;
+
+      a {
+        @include dc-link('m');
+      }
+
+      span {
+        color: var(--dc-link-color--active);
+        font-size: var(--dc-font-size-m);
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+
+    &_end {
+      a {
+        @include dc-link(m);
+        margin-right: var(--dc-block-padding-4);
+      }
+
+      button {
+        @include dc-button(m);
+      }
+    }
+  }
+
+  &_content {
+    width: 100%;
+    overflow-y: scroll;
+    height: 100%;
+    max-height: calc(100vh - var(--dc-layout-header-height));
+
+    & > * {
+      height: 100%;
+    }
+  }
 }

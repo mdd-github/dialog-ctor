@@ -1,0 +1,33 @@
+
+
+@mixin dc-link($font-size: m) {
+  color: var(--dc-link-color);
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: var(--dc-font-size-#{$font-size});
+
+  &:hover {
+    color: var(--dc-link-color--hover);
+  }
+}
+
+@mixin dc-button($button-size: m) {
+  font-size: calc(var(--dc-font-size-#{$button-size}));
+  font-weight: 600;
+  color: var(--dc-link-color--active);
+  background-color: var(--dc-brand-color);
+  padding: var(--dc-block-padding-2) var(--dc-block-padding-4);
+
+  border: none;
+  border-radius: var(--dc-border-radius);
+  line-height: var(--dc-font-size-#{$button-size});
+  text-decoration: none;
+  outline: none;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--dc-brand-color--darken);
+  }
+}
