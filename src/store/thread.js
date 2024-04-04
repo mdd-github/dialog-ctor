@@ -31,8 +31,8 @@ const INITIAL_MESSAGES_LIST = [
         content: 'Здорово, давай я тебе расскажу немного о нашем продукте?',
         questionType: QUESTION_TYPE.SELECT,
         questionVariants: [
-            { id: 0, content: 'Да, давай!'},
-            { id: 1, content: 'Было бы интересно послушать!'},
+            {id: 0, content: 'Да, давай!'},
+            {id: 1, content: 'Было бы интересно послушать!'},
         ]
     },
     {
@@ -59,7 +59,13 @@ export const useThreadStore = create((set) => ({
             }
         ]
     })),
-    updateMessage: ({id, characterId, content, questionType, responseVariants}) => set((state) => ({
-
+    updateMessage: ({id, newMessage}) => set((state) => ({
+        messages: state.messages
+            .map((message, idx) => (id === idx ? newMessage : message))
+    })),
+    deleteMessage: (id) => set((state) => ({
+        messages: state.messages
+            .filter((message) => message.id !== id)
+            .map((message, id) => ({...message, id}))
     }))
 }));

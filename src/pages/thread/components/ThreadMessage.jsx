@@ -1,9 +1,11 @@
 import {useCharactersStore} from "../../../store/characters";
-import {memo, useMemo} from "react";
+import {memo, useCallback, useMemo} from "react";
 import {THREAD_MESSAGE_MODE} from "../../../constants";
+import {useThreadStore} from "../../../store/thread";
 
-export const ThreadMessage = memo(({message, mode}) => {
+export const ThreadMessage = memo(({message, mode, onEdit, onDelete}) => {
     const characters = useCharactersStore((state) => state.list);
+    const deleteMessage = useThreadStore((state) => state.deleteMessage);
 
     const character = useMemo(
         () => characters.find(({id}) => id === message.characterId),
@@ -24,6 +26,11 @@ export const ThreadMessage = memo(({message, mode}) => {
         return classNames.join(' ');
     }, [character, mode]);
 
+    const onDeleteHandler = useCallback(() => {
+        onDelete?.();
+        deleteMessage(message.id);
+    }, [deleteMessage, message.id, onDelete]);
+
     return (
         <div className={messageClasses}>
             {character && (
@@ -35,7 +42,10 @@ export const ThreadMessage = memo(({message, mode}) => {
             <div className="thread_message-content">
                 <div className="thread_message-content_header">
                     <h2>{character ? character.name : 'Вы'}</h2>
-                    <span>Редактировать</span>
+                    <span>
+                        <span onClick={() => onEdit?.()} className="thread_message-edit-button">Редактировать</span>
+                        <span onClick={onDeleteHandler} className="thread_message-delete-button">Удалить</span>
+                    </span>
                 </div>
 
                 <span className="thread_message-content_text">{message.content}</span>

@@ -99,21 +99,22 @@
         }
       }
 
-      &_text {
-        font-size: var(--dc-font-size-l);
-        font-weight: 300;
-      }
-    }
-
-    &--character {
-      cursor: pointer;
-
       &:hover {
         .thread_message-content_header {
           span {
-            display: block;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: var(--dc-block-padding-1);
+
+            cursor: pointer;
           }
         }
+      }
+
+      &_text {
+        font-size: var(--dc-font-size-l);
+        font-weight: 300;
       }
     }
 
@@ -123,6 +124,10 @@
       .thread_message-content {
         background-color: var(--dc-primary-background-color);
         border: 1px solid var(--dc-border-color)
+      }
+
+      .thread_message-edit-button {
+        display: none !important;
       }
     }
 
