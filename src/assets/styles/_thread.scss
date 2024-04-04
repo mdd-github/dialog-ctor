@@ -84,6 +84,7 @@
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
+        gap: var(--dc-block-padding-1);
 
         h2 {
           font-size: var(--dc-font-size-m);

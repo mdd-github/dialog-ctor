@@ -2,6 +2,8 @@ import {create} from "zustand";
 import {AUTHOR_TYPE, QUESTION_TYPE} from "../constants";
 import {cloneDeep} from "../utils";
 
+const USER_MESSAGE_CONTENT = 'Пользователь вводит сообщение, либо выбирает из вариантов';
+const CHARACTER_MESSAGE_DEFAULT_CONTENT = 'Реплика персонажа';
 
 const INITIAL_MESSAGES_LIST = [
     {
@@ -22,7 +24,7 @@ const INITIAL_MESSAGES_LIST = [
         id: 2,
         characterId: null,
         authorType: AUTHOR_TYPE.USER,
-        content: 'Пользователь вводит сообщение, либо выбирает из вариантов'
+        content: USER_MESSAGE_CONTENT
     },
     {
         id: 3,
@@ -39,7 +41,7 @@ const INITIAL_MESSAGES_LIST = [
         id: 4,
         characterId: null,
         authorType: AUTHOR_TYPE.USER,
-        content: 'Пользователь вводит сообщение, либо выбирает из вариантов'
+        content: USER_MESSAGE_CONTENT
     }
 ];
 
@@ -48,18 +50,19 @@ export const useThreadStore = create((set) => ({
     // State
     messages: cloneDeep(INITIAL_MESSAGES_LIST),
     // Actions
-    addMessage: () => set((state) => ({
+    createMessage: (authorType) => set((state) => ({
         messages: [
             ...state.messages,
             {
-                id: state.message.length,
-                characterId: 0,
-                content: '',
-                questionType: QUESTION_TYPE.NONE
+                id: state.messages.length,
+                characterId: authorType === AUTHOR_TYPE.CHARACTER ? 0 : undefined,
+                authorType,
+                content: authorType === AUTHOR_TYPE.CHARACTER ? CHARACTER_MESSAGE_DEFAULT_CONTENT : USER_MESSAGE_CONTENT,
+                questionType: authorType === AUTHOR_TYPE.CHARACTER ? QUESTION_TYPE.NONE : undefined,
             }
         ]
     })),
-    updateMessage: ({id, newMessage}) => set((state) => ({
+    updateMessage: (id, newMessage) => set((state) => ({
         messages: state.messages
             .map((message, idx) => (id === idx ? newMessage : message))
     })),
