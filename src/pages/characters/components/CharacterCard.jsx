@@ -1,5 +1,5 @@
 import React, {memo, useState} from 'react';
-import {CHARACTER_CARD_MODE} from "../constants";
+import {CHARACTER_CARD_MODE} from "../../../constants";
 import {useCharactersStore} from "../../../store/characters";
 
 

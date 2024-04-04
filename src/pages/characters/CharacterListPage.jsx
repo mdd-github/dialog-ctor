@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useCharactersStore} from "../../store/characters";
 import {CharacterCard} from "./components/CharacterCard";
-import {CHARACTER_CARD_MODE} from "./constants";
+import {CHARACTER_CARD_MODE} from "../../constants";
 
 export const CharacterListPage = () => {
     const [characterInEdit, setCharacterInEdit] = useState(null);

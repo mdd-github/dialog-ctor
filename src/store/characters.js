@@ -4,26 +4,26 @@ import {cloneDeep} from "../utils";
 const INITIAL_CHARACTER_LIST = [
     {
         id: 0,
-        name: '',
-        bio: '',
+        name: 'Иван',
+        bio: 'Занимается системной аналитикой в команде',
         avatar: require('../assets/images/man-1.png')
     },
     {
         id: 1,
-        name: '',
-        bio: '',
-        avatar: require('../assets/images/man-2.png')
-    },
-    {
-        id: 2,
-        name: '',
-        bio: '',
+        name: 'Елизавета',
+        bio: 'Инженер технической поддержки 1-я линия',
         avatar: require('../assets/images/woman-1.png')
     },
     {
+        id: 2,
+        name: 'Григорий',
+        bio: 'Тимлид команды',
+        avatar: require('../assets/images/man-2.png')
+    },
+    {
         id: 3,
-        name: '',
-        bio: '',
+        name: 'Юлия',
+        bio: 'Разработчик',
         avatar: require('../assets/images/woman-2.png')
     }
 ];
