@@ -15,6 +15,8 @@
     height: 100%;
     padding: var(--dc-block-padding-4);
 
+    width: 900px;
+
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -29,11 +31,29 @@
     }
   }
 
+  &_empty-placeholder {
+    width: 100%;
+    text-align: center;
+
+    h2 {
+      margin: 0;
+      padding: 0;
+
+      font-size: var(--dc-font-size-xl);
+      font-weight: 400;
+    }
+    span {
+      font-size: var(--dc-font-size-m);
+      font-weight: 400;
+    }
+  }
+
   &_message-list {
     &-wrapper {
       flex: 1;
       overflow-y: scroll;
       max-height: 80vh;
+      height: 100%;
     }
 
     display: flex;
@@ -153,6 +173,159 @@
 
     &_button {
       @include dc-button-secondary(l)
+    }
+  }
+
+  &_edit-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: stretch;
+    gap: var(--dc-block-padding-4);
+
+    border-top: 1px solid var(--dc-border-color);
+    padding-top: var(--dc-block-padding-2);
+
+    h4 {
+      margin: var(--dc-block-padding-2) 0;
+      padding: 0;
+    }
+
+    &_button {
+      @include dc-button(s);
+    }
+
+    &_button--secondary {
+      @include dc-button-secondary(s);
+    }
+
+    &_button--text {
+      @include dc-button-text(s);
+    }
+
+    &_character-selector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--dc-block-padding-1);
+
+      &_info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        h3 {
+          margin: 0;
+          padding: 0;
+
+          font-size: var(--dc-font-size-m);
+        }
+
+        img {
+          width: 64px;
+          height: 64px;
+          object-fit: contain;
+          border-radius: 50%;
+          border: 2px solid var(--dc-border-color);
+        }
+      }
+    }
+
+    &_fields {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+
+      gap: var(--dc-block-padding-1);
+
+      &_row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: stretch;
+        gap: var(--dc-block-padding-2);
+      }
+
+      &_col {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: space-between;
+        margin-right: var(--dc-block-padding-2);
+      }
+
+      textarea {
+        resize: none;
+        width: 100%;
+        font-size: var(--dc-font-size-s);
+        padding: var(--dc-block-padding-1);
+
+        border: 1px solid var(--dc-border-color);
+        border-radius: var(--dc-border-radius-sm);
+
+        margin-bottom: var(--dc-block-padding-1);
+      }
+
+      input[type=radio] {
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        padding: 0;
+        margin-right: var(--dc-block-padding-1);
+      }
+
+      label:has(input[type=radio]) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-right: var(--dc-block-padding-2);
+      }
+    }
+
+    &_question-variants {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      gap: var(--dc-block-padding-1);
+
+      input {
+        width: 250px;
+        height: 40px;
+        font-size: var(--dc-font-size-s);
+        padding: var(--dc-block-padding-1);
+
+        border: 1px solid var(--dc-border-color);
+        border-radius: var(--dc-border-radius);
+      }
+
+      &_item {
+        position: relative;
+
+        button {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    &_buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+
+      gap: var(--dc-block-padding-2);
     }
   }
 }

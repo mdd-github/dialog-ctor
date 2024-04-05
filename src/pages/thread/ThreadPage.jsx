@@ -12,7 +12,10 @@ export const ThreadPage = () => {
                 <h1>Создание чата</h1>
                 <MessagesList messageInEdit={messageInEdit} setMessageInEdit={setMessageInEdit} />
 
-                { messageInEdit !== null && <EditMessagePanel /> }
+                { messageInEdit !== null && <EditMessagePanel
+                    messageId={messageInEdit}
+                    onBlur={() => setMessageInEdit(null)}
+                /> }
                 { messageInEdit === null && <CreateMessagePanel /> }
             </div>
         </div>

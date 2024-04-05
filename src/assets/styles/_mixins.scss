@@ -40,3 +40,13 @@
     background-color: var(--dc-gray-color--darken);
   }
 }
+
+@mixin dc-button-text($button-size: m) {
+  @include dc-button($button-size);
+  background-color: transparent;
+  padding: var(--dc-block-padding-1);
+
+  &:hover {
+    background-color: var(--dc-gray-color);
+  }
+}

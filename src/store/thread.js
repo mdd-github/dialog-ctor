@@ -11,14 +11,16 @@ const INITIAL_MESSAGES_LIST = [
         characterId: 0,
         authorType: AUTHOR_TYPE.CHARACTER,
         content: 'Привет, я Иван. Я системный аналитик!',
-        questionType: QUESTION_TYPE.NONE
+        questionType: QUESTION_TYPE.NONE,
+        questionVariants: []
     },
     {
         id: 1,
         characterId: 3,
         authorType: AUTHOR_TYPE.CHARACTER,
         content: 'Привет, а я Юлия. Я разработчик! А как зовут тебя и чем ты занимаешься?',
-        questionType: QUESTION_TYPE.TEXT
+        questionType: QUESTION_TYPE.TEXT,
+        questionVariants: []
     },
     {
         id: 2,
@@ -59,6 +61,7 @@ export const useThreadStore = create((set) => ({
                 authorType,
                 content: authorType === AUTHOR_TYPE.CHARACTER ? CHARACTER_MESSAGE_DEFAULT_CONTENT : USER_MESSAGE_CONTENT,
                 questionType: authorType === AUTHOR_TYPE.CHARACTER ? QUESTION_TYPE.NONE : undefined,
+                questionVariants: []
             }
         ]
     })),
