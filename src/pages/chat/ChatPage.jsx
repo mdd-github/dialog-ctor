@@ -119,7 +119,7 @@ export const ChatPage = () => {
                     </div>
                 )}
 
-                {messages.length && (messages.at(-1).type === MESSAGE_TYPE.TYPING || messages.at(-1).type === MESSAGE_TYPE.SYSTEM) && (
+                {messages.length > 0 && (messages.at(-1).type === MESSAGE_TYPE.TYPING || messages.at(-1).type === MESSAGE_TYPE.SYSTEM) && (
                     <div className="chat-page_inputs-container chat-page_inputs-container--waiting">
                         <textarea
                             disabled={true}
