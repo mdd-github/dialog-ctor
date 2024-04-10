@@ -1,13 +1,13 @@
-import {useCallback, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {ChatMessage} from "./components/ChatMessage";
 import {useThreadStore} from "../../store/thread";
-import {cloneDeep} from "../../utils";
 import {AUTHOR_TYPE, QUESTION_TYPE} from "../../constants";
 
 const MESSAGE_TYPE = Object.freeze({
     TYPING: 'typing',
     USER: 'user',
-    CHARACTER: 'character'
+    CHARACTER: 'character',
+    SYSTEM: 'system'
 })
 
 export const ChatPage = () => {
@@ -16,6 +16,18 @@ export const ChatPage = () => {
     const [questionMessage, setQuestionMessage] = useState(null);
 
     const pushNextMessage = () => {
+        if(messagesQueue.length === messages.length) {
+            setMessages([
+                ...messages,
+                {
+                    id: messages.length,
+                    type: MESSAGE_TYPE.SYSTEM,
+                    content: 'Чат окончен'
+                }
+            ]);
+            return;
+        }
+
         const message = messagesQueue[messages.length];
 
         if (message.authorType === AUTHOR_TYPE.CHARACTER) {
@@ -50,10 +62,24 @@ export const ChatPage = () => {
             return;
         }
 
-        if(messages.at(-1).type === MESSAGE_TYPE.CHARACTER) {
+        if(messages.at(-1).type === MESSAGE_TYPE.CHARACTER || messages.at(-1).type === MESSAGE_TYPE.USER) {
             pushNextMessage();
         }
     }, [messages])
+
+    const [userMessage, setUserMessage] = useState('');
+    const sendUserMessage = (content) => {
+        setMessages([
+            ...messages,
+            {
+                id: messages.length,
+                type: MESSAGE_TYPE.USER,
+                content
+            }
+        ]);
+        setUserMessage('');
+        setQuestionMessage(null);
+    }
 
     return (
         <div className="chat-page">
@@ -76,14 +102,29 @@ export const ChatPage = () => {
 
                 {questionMessage?.questionType === QUESTION_TYPE.TEXT && (
                     <div className="chat-page_inputs-container chat-page_inputs-container--text">
-                        <textarea rows="3" placeholder="Введите сообщение и нажмите отправить..."
-                                  onClick={() => pushNextMessage()}/>
+                        <textarea
+                            rows="3"
+                            placeholder="Введите сообщение и нажмите отправить..."
+                            value={userMessage}
+                            onChange={(e) => setUserMessage(e.target.value)}
+                        />
+                        <button type="button" onClick={() => sendUserMessage(userMessage)}>Отправить</button>
                     </div>
                 )}
 
                 {questionMessage?.questionType === QUESTION_TYPE.SELECT && (
                     <div className="chat-page_inputs-container chat-page_inputs-container--buttons">
-                        variants
+                        {
+                            questionMessage.questionVariants.map(variant => (
+                                <button
+                                    key={variant.id}
+                                    type="button"
+                                    onClick={() => sendUserMessage(variant.content)}
+                                >
+                                    {variant.content}
+                                </button>
+                            ))
+                        }
                     </div>
                 )}
             </div>

@@ -44,6 +44,14 @@ const INITIAL_MESSAGES_LIST = [
         characterId: null,
         authorType: AUTHOR_TYPE.USER,
         content: USER_MESSAGE_CONTENT
+    },
+    {
+        id: 5,
+        characterId: 0,
+        authorType: AUTHOR_TYPE.CHARACTER,
+        content: 'Отлично, мы делаем какую-то хуйню',
+        questionType: QUESTION_TYPE.NONE,
+        questionVariants: []
     }
 ];
 
