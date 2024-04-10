@@ -18,3 +18,10 @@ export const QUESTION_TYPE = Object.freeze({
     SELECT: 'select',
     NONE: 'none'
 });
+
+export const MESSAGE_TYPE = Object.freeze({
+    TYPING: 'typing',
+    USER: 'user',
+    CHARACTER: 'character',
+    SYSTEM: 'system'
+})

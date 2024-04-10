@@ -1,3 +1,4 @@
+@import "mixins";
 
 .chat-page {
   width: 100%;
@@ -25,6 +26,14 @@
   &_messages-container {
     flex: 1;
     overflow-y: scroll;
+    padding: var(--dc-block-padding-4);
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+
+    gap: var(--dc-block-padding-3);
   }
 
   &_inputs-container {
@@ -37,5 +46,45 @@
 
     padding: var(--dc-block-padding-4);
     border-top: 1px solid var(--dc-border-color);
+
+    &--text, &--waiting {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: stretch;
+
+      gap: var(--dc-block-padding-3);
+
+      textarea {
+        resize: none;
+        width: 100%;
+        font-size: var(--dc-font-size-s);
+        padding: var(--dc-block-padding-1);
+
+        border: 1px solid var(--dc-border-color);
+        border-radius: var(--dc-border-radius-sm);
+
+        margin-bottom: var(--dc-block-padding-1);
+      }
+
+      button {
+        @include dc-button(m)
+      }
+      button:disabled {
+        @include dc-button-secondary(m)
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: var(--dc-block-padding-3);
+
+      button {
+        @include dc-button-secondary(m)
+      }
+    }
   }
 }

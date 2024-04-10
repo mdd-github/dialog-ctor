@@ -39,6 +39,10 @@
   &:hover {
     background-color: var(--dc-gray-color--darken);
   }
+  &:hover:disabled {
+    background-color: var(--dc-gray-color);
+    cursor: default;
+  }
 }
 
 @mixin dc-button-text($button-size: m) {

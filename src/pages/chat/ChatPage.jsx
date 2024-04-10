@@ -1,14 +1,7 @@
 import {useEffect, useState} from "react";
 import {ChatMessage} from "./components/ChatMessage";
 import {useThreadStore} from "../../store/thread";
-import {AUTHOR_TYPE, QUESTION_TYPE} from "../../constants";
-
-const MESSAGE_TYPE = Object.freeze({
-    TYPING: 'typing',
-    USER: 'user',
-    CHARACTER: 'character',
-    SYSTEM: 'system'
-})
+import {AUTHOR_TYPE, MESSAGE_TYPE, QUESTION_TYPE} from "../../constants";
 
 export const ChatPage = () => {
     const messagesQueue = useThreadStore(state => state.messages);
@@ -84,8 +77,6 @@ export const ChatPage = () => {
     return (
         <div className="chat-page">
             <div className="chat-page_content">
-                <h1>Проверка чата</h1>
-
                 <div className="chat-page_messages-container">
                     {
                         messages.map((message) => (
@@ -125,6 +116,19 @@ export const ChatPage = () => {
                                 </button>
                             ))
                         }
+                    </div>
+                )}
+
+                {messages.length && (messages.at(-1).type === MESSAGE_TYPE.TYPING || messages.at(-1).type === MESSAGE_TYPE.SYSTEM) && (
+                    <div className="chat-page_inputs-container chat-page_inputs-container--waiting">
+                        <textarea
+                            disabled={true}
+                            rows="3"
+                            placeholder=""
+                            value={userMessage}
+                            onChange={(e) => setUserMessage(e.target.value)}
+                        />
+                        <button disabled={true} type="button" onClick={() => sendUserMessage(userMessage)}>Отправить</button>
                     </div>
                 )}
             </div>
