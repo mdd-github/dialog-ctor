@@ -1,6 +1,6 @@
 import {useCharactersStore} from "../../../store/characters";
 import {memo, useCallback, useMemo} from "react";
-import {THREAD_MESSAGE_MODE} from "../../../constants";
+import {AUTHOR_TYPE, THREAD_MESSAGE_MODE} from "../../../constants";
 import {useThreadStore} from "../../../store/thread";
 
 export const ThreadMessage = memo(({message, mode, onEdit, onDelete}) => {
@@ -41,7 +41,7 @@ export const ThreadMessage = memo(({message, mode, onEdit, onDelete}) => {
 
             <div className="thread_message-content">
                 <div className="thread_message-content_header">
-                    <h2>{character ? character.name : 'Вы'}</h2>
+                    <h2>{message.authorType === AUTHOR_TYPE.CHARACTER ? character.name : 'Вы'}</h2>
                     <span>
                         <span onClick={() => onEdit?.()} className="thread_message-edit-button">Редактировать</span>
                         <span onClick={onDeleteHandler} className="thread_message-delete-button">Удалить</span>

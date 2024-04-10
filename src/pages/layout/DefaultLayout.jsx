@@ -33,6 +33,7 @@ export const DefaultLayout = () => {
         return APP_SCREENS.find(screen => screen.route === location.pathname)
     }, [location.pathname])
 
+
     return (
         <div className="layout">
             <header className="layout_header">

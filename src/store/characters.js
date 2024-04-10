@@ -33,9 +33,6 @@ export const useCharactersStore = create((set) => ({
     list: cloneDeep(INITIAL_CHARACTER_LIST),
 
     // ACTIONS
-    reset: () => set(() => ({
-        list: cloneDeep(INITIAL_CHARACTER_LIST)
-    })),
     update: ({id, name, bio}) => set((state) => ({
         list: state.list.map((character) => {
             if (character.id === id) {
